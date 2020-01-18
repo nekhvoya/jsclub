@@ -9,23 +9,20 @@ let spiral = function (m) {
 
     let n = [];
     while (m.length > 0) {
-        let up = m[0];
+        let up = m.shift();
         up.forEach(el => n.push(el));
-        m = m.splice(1, m.length);
 
         for (let j = 0; j < m.length - 1; j++) {
             n.push(m[j].pop());
         }
 
-        let down = m[m.length - 1];
+        let down = m.pop();
         down = down.sort((e1, e2) => e2 - e1);
         down.forEach(el => n.push(el));
-        m = m.splice(0, m.length - 1);
 
         for (let j = m.length - 1; j >= 0; j--) {
             n.push(m[j].shift());
         }
-
     }
     console.log(n);
 };
